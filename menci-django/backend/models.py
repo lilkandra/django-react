@@ -13,6 +13,7 @@ class Client(models.Model):
     email = models.EmailField()
     address = models.CharField(max_length=1000)
     phone = models.CharField(max_length=1000)
+    city = models.CharField(max_length=10)
 
 class Item(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
@@ -20,11 +21,8 @@ class Item(models.Model):
     size = models.CharField(max_length=10)
     quantity = models.PositiveIntegerField()
 
-class Bag(models.Model):
-    session = models.CharField(max_length=1000000, default='', null=True)
-    items = models.ManyToManyField(Item)
-    total = models.PositiveIntegerField(default=0)
-    validated = models.BooleanField(default=False)
+class Subscriber(models.Model):
+    email = models.EmailField()
 
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)

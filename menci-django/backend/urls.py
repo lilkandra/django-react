@@ -9,7 +9,7 @@ urlpatterns = [
     path('cart', views.index, name='cart'),
     path('contact', views.index, name='contact'),
     path('productList', views.index, name='productList'),
-    path('validation', views.index, name='validation'),
+    path('checkout', views.index, name='validation'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 '''path('products', views.products, name='products'),

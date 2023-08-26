@@ -64,7 +64,7 @@ ROOT_URLCONF = 'menci.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/mencii/build')],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/test/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/mencii/build/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/test/build/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 # Default primary key field type
@@ -143,9 +143,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'khalilbenothman4444@gmail.com'
-EMAIL_HOST_PASSWORD = 'sxmczeajhtyhsnaj'
-ADMINS = [('khalil', 'khalilbenothman4444@gmail.com')]
+EMAIL_HOST_USER = 'menci.tn@gmail.com'
+EMAIL_HOST_PASSWORD = 'nrixibgrjuaufkae'
+ADMINS = [('khalil', 'khalilbenothman4444@gmail.com'), ('maher', 'maherlamraoui00@gmail.com'), ('malek', 'malekbenslama00@gmail.com')]
 
 # settings.py
 

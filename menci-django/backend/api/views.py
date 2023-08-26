@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from .serializers import ProductSerializer, ItemSerializer
 from rest_framework.decorators import api_view
-from backend.models import Product, Client, Item, Order
+from backend.models import Product, Client, Item, Order, Subscriber
 from rest_framework import status
 from .utils import send_email_with_order
 from django.shortcuts import get_object_or_404
@@ -25,7 +25,8 @@ def validateBag(request):
     email = request.data.get('email')
     address = request.data.get('address')
     phone = request.data.get('phone')
-    client = Client.objects.create(name=name, email=email, address=address, phone=phone)
+    city = request.data.get('city')
+    client = Client.objects.create(name=name, email=email, address=address, phone=phone, city=city)
     client.save()
     total = request.data.get('total')
     order = Order.objects.create(client=client, total=total)
@@ -41,5 +42,11 @@ def validateBag(request):
     order.save()
     send_email_with_order(order.id)
     return Response({'success': 'order passed successfully'}, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def subscribe(request):
+    email = request.data.get('email')
+    subscriber = Subscriber.objects.create(email=email)
+    return Response(status=status.HTTP_200_OK)
 
 
