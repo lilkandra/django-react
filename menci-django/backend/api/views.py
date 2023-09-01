@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from .serializers import ProductSerializer, ItemSerializer
+from .serializers import ProductSerializer, ItemSerializer, MessageSerializer
 from rest_framework.decorators import api_view
 from backend.models import Product, Client, Item, Order, Subscriber
 from rest_framework import status
@@ -48,5 +48,14 @@ def subscribe(request):
     email = request.data.get('email')
     subscriber = Subscriber.objects.create(email=email)
     return Response(status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def contact(request):
+    serializer = MessageSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 

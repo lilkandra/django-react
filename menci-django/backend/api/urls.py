@@ -7,4 +7,5 @@ urlpatterns = [
     path('getProduct/<str:id>', views.getProduct, name='getProduct_byId'),
     path('validateBag', views.validateBag, name='validateBag_api'),
     path('subscribe', views.subscribe, name='subscribe_to_newsletter'),
+    path('contact', views.contact, name='contact'),
 ]

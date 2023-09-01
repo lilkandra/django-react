@@ -1,12 +1,14 @@
 from django.db import models
 from datetime import datetime
 
+class Image(models.Model):
+    src = models.ImageField(upload_to='static/assets')
 class Product(models.Model):
     title = models.CharField(max_length=100)
     price = models.PositiveBigIntegerField()
     description = models.CharField(max_length=1000)
-    main_image = models.ImageField(upload_to='static/assets')
-    scnd_image = models.ImageField(upload_to='static/assets')
+    images = models.ManyToManyField(Image)
+    sold_out = models.BooleanField(default=False)
 
 class Client(models.Model):
     name = models.CharField(max_length=100)
@@ -31,5 +33,6 @@ class Order(models.Model):
     date = models.DateTimeField(auto_now=True)
 
 class Message(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    sender_first_name = models.CharField(max_length=1000, default='')
+    sender_last_name = models.CharField(max_length=1000, default='')
     content = models.TextField(max_length=10000)
